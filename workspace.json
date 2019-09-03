@@ -53,7 +53,9 @@
         "serve": {
           "builder": "@nrwl/web:dev-server",
           "options": {
-            "buildTarget": "app:build"
+            "buildTarget": "app:build",
+            "open": true,
+            "proxyConfig": "apps/app/proxy.conf.json"
           },
           "configurations": {
             "production": {

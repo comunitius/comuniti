@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  app:
+    container_name: container_app
+    build: 
+      context: .
+      dockerfile: apps/app/Dockerfile.dockerdev
+    restart: always
+    ports: 
+      - "4200:4200"
+    volumes:
+      - ./:/usr/web/app/
+      - ./node_modules:/usr/web/app/node_modules
+    depends_on:
+      - api
+  
