@@ -15,8 +15,11 @@ jobs:
             - v001-comunitius-{{ checksum "package-lock.json" }}
             - v001-comunitius
       - run:
+          name: app npm install
+          command: npm install
+      - run:
           name: front-end unit tests
-          command: npm install && npm run test
+          command: npm run test
       - run:
           name: front-end build for production
           command:  npm run build
