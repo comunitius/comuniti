@@ -18,8 +18,13 @@ services:
   redis:
     image: redis:5.0.5-alpine
     restart: always
-    volumes:
-      - redis_data:/data
-volumes:
-  redis_data:
+  postgres:
+    image: postgres:12-alpine
+    restart: always
+    environment:
+      - PG_USER=postgres
+      - PG_HOST=postgres
+      - PG_DATABASE=postgres
+      - PG_PASSWORD=postgress_password
+      - PG_PORT=5432
   

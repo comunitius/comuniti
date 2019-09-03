@@ -9,6 +9,4 @@ COPY package-lock.json /usr/be/api/package-lock.json
 RUN npm install
 COPY . .
 
-EXPOSE 3333
-
 CMD ["npm", "run",  "nx",  "serve",  "api"]

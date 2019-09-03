@@ -1,0 +1,56 @@
+version: '3.7'
+
+services:
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - "4201:80"
+    depends_on:
+      - api
+      - app
+  app:
+    container_name: container_app
+    build: 
+      context: .
+      dockerfile: apps/app/Dockerfile.dockerdev
+    restart: always
+    expose: 
+      - "8080"
+    volumes:
+      - ./:/usr/web/app/
+      - ./node_modules:/usr/web/app/node_modules
+    depends_on:
+      - api
+  api:
+    container_name: container_api
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    container_name: container_api
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    restart: always
+    expose: 
+      - "3333"
+    # depends_on:
+    #   - redis
+    volumes: 
+      - /usr/be/api/node_modules
+      - .:/usr/be/api
+  # redis:
+  #   image: redis:5.0.5-alpine
+  #   restart: always
+  # postgres:
+  #   image: postgres:12-alpine
+  #   restart: always
+  #   environment:
+  #     - PG_USER=postgres
+  #     - PG_HOST=postgres
+  #     - PG_DATABASE=postgres
+  #     - PG_PASSWORD=postgress_password
+  #     - PG_PORT=5432
+  
