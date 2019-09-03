@@ -3,7 +3,8 @@ import { render, cleanup } from '@testing-library/react';
 
 import { BrowserRouter } from 'react-router-dom';
 
-import App from './app';
+import { App } from './app';
+//hello
 
 describe('App', () => {
   afterEach(cleanup);

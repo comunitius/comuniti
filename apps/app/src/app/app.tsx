@@ -29,7 +29,7 @@ export class App extends React.Component {
             width="75"
             src="https://nx.dev/assets/images/nx-logo-white.svg"
           />
-          <h1>Welcome to NRWL</h1>
+          <h1>Welcome to app!</h1>
         </header>
         <main>
           <h2>Resources &amp; Tools</h2>
