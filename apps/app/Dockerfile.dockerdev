@@ -1,0 +1,19 @@
+# Stage 0
+# Frontend build based on Node.js
+FROM node:lts-alpine as builder
+
+RUN mkdir -p /usr/web/app
+
+WORKDIR /usr/web/app
+
+ENV PATH /usr/web/app/node_modules/.bin:$PATH
+
+COPY package.json /usr/web/app/package.json
+COPY package-lock.json /usr/web/app/package-lock.json
+
+COPY . .    
+RUN npm install
+
+EXPOSE 4200
+CMD [ "npm", "start", "app" ]
+# CMD [ "screen" ]
