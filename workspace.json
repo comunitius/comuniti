@@ -55,7 +55,8 @@
           "options": {
             "buildTarget": "app:build",
             "open": true,
-            "proxyConfig": "apps/app/proxy.conf.json"
+            "proxyConfig": "apps/app/proxy.conf.json",
+            "port": 4200
           },
           "configurations": {
             "production": {
